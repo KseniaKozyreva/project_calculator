@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Калькулятор проектов</title>
+    <style>
+        body { font-family: sans-serif; max-width: 500px; margin: 50px auto; padding: 20px; border: 1px solid #ccc; border-radius: 10px; }
+        input, select { width: 100%; padding: 10px; margin: 10px 0; }
+        button { width: 100%; padding: 10px; background: #28a745; color: white; border: none; cursor: pointer; }
+        .result { margin-top: 20px; font-size: 1.2em; font-weight: bold; color: #007bff; }
+    </style>
+</head>
+<body>
+    <h2>Калькулятор стоимости проекта</h2>
+    <form method="POST">
+        <label>Тип проекта:</label>
+        <select name="project_type" id="project_type">
+            <option value="landing">Лендинг (5000)</option>
+            <option value="store">Интернет-магазин (15000)</option>
+            <option value="portal">Веб-портал (30000)</option>
+        </select>
+
+        <label>Часы работы:</label>
+        <input type="number" name="hours" id="hours" value="0" min="0">
+
+        <label>
+            <input type="checkbox" name="express" id="express"> Срочный заказ (+50%)
+        </label>
+
+        <button type="submit" id="calculate_btn">Рассчитать стоимость</button>
+    </form>
+
+    {% if cost %}
+    <div class="result" id="result_value">
+        Итоговая стоимость: {{ cost }} руб.
+    </div>
+    {% endif %}
+</body>
+</html>
